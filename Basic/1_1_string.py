@@ -1,0 +1,7 @@
+print(1.3)
+print(5+4)
+print("5+4")
+print('hello world')
+print("hello world")
+print("lol")
+print("lol"*5)
