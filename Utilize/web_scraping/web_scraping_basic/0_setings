@@ -1,0 +1,8 @@
+xpath 활용이 용이하고, 검색기능을 통해 바로 위치 찾기 가능
+
+pip install requests
+
+pip install beautifulsoup4
+-> scraping을 위해 사용되는 package
+pip install lxml
+-> 구문을 분석하는 파스(parse, 구문분석) 언어
