@@ -42,16 +42,16 @@ def print_match(m):
 m = p.match("careless") # 주어진 문자열이 처음부터 일치하는지 
 # 확인하므로 care와 careless가 다르더라도 앞부분이 일치하여, match되었다고 인식.
 #m = p.search("good care") # search는 주어진 문자열중에 일치하는게 있는지 확인
-print_match(m)
+# print_match(m)
 # print(m.group()) # 매치되지 않으면 에러발생.
 
 lst = p.findall("good care cafe") # findall :일치하는 모든 것을 리스트 형태로 변환
-print(lst)
-a = re.compile(".py$")
+# print(lst)
+a = re.compile(".")
 c = a.search("asdfasdf.py")
-if a.search("asdfasdf"):
-    print(1)
-print(c)
+if a.search("asdfasdf.py"):
+    print(c)
+# print(c)
 # 1. re.compile("원하는 형태")
 # 2. m = p.match("비교할 문자열") : 주어진 문자열이 처음부터 일치하는지
 # 3. m = p.search("비교할 문자열") # search는 주어진 문자열중에 일치하는게 있는지 확인
