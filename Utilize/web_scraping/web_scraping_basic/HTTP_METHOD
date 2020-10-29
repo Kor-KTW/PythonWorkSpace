@@ -1,0 +1,7 @@
+GET
+누구나 볼 수 있게 url에 적어 보내는 방식
+주소 뒤에?를적고 정보or조건로 정보전달.
+POST
+HTTP message body에 숨겨서 보내는 방식.
+id, pwd등 
+
