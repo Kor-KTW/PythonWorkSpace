@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 url = "https://comic.naver.com/webtoon/list.nhn?titleId=557672&weekday=thu"
 
-for 
+
 res = requests.get(url)
 res.raise_for_status()
  
