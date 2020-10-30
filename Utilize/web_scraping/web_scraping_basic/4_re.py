@@ -47,10 +47,10 @@ m = p.match("careless") # 주어진 문자열이 처음부터 일치하는지
 
 lst = p.findall("good care cafe") # findall :일치하는 모든 것을 리스트 형태로 변환
 # print(lst)
-a = re.compile(".")
+a = re.compile("11g31")
 c = a.search("asdfasdf.py")
 if a.search("asdfasdf.py"):
-    print(c)
+    print(1)
 # print(c)
 # 1. re.compile("원하는 형태")
 # 2. m = p.match("비교할 문자열") : 주어진 문자열이 처음부터 일치하는지

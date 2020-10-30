@@ -6,4 +6,4 @@ res = requests.get(url)
 res.raise_for_status()
 soup = BeautifulSoup(res.text, "lxml")
 
-print(res.text)
+items = soup.find_all("li", attrs={"class":"search-product"})
