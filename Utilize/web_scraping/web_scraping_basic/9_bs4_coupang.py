@@ -16,9 +16,13 @@ for item in items:
     if ad_badge:
         print("광고 상품 제외합니다.")
         continue
+
     name = item.find("div", attrs={"class":"name"}).get_text()
     price = item.find("strong", attrs={"class":"price-value"}).get_text()
     rate = item.find("em", attrs={"class":"rating"})
+    if "Apple" in name:
+        print("애플 상품 제외합니다.")
+        continue
     if rate:
         rate= rate.get_text()
     else:
