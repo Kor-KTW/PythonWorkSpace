@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+
 url = "https://www.coupang.com/np/search?component=&q=%EB%85%B8%ED%8A%B8%EB%B6%81&channel=user"
 headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"}
 res = requests.get(url, headers=headers)
@@ -38,7 +39,7 @@ for item in items:
         rate = "평점 수 없음"
         print("평점 수 없는 상품 제외합니다.")
         continue
-    if float(rate) >= 4.5 and int(rate_count) > 50:
+    if float(rate) >= 4.5 and int(rate_count) > 100:
         print(name, price, rate, rate_count)
 
 print(name, price, rate, rate_count)
