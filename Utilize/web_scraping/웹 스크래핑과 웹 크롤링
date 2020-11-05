@@ -1,2 +1,15 @@
 웹 스크래핑 -> web scraping, 웹 내의 필요한 데이터만을 수집.
 웹 크롤링 -> web crawling, 웹 내의 허용된 링크를 돌며 모든 데이터를 수집.
+# HTML (Hyper Text Markup Language, 웹을 만들 때, 사용하는 언어)
+# gui의 ttkinter 처럼 HTML에도 다양한 element가 존재함.
+# 웹의 구성 3 요소 
+
+# html -> 건물의 뼈대.
+
+# css -> 인테리어.
+
+# js -> 살아있게 하는것.(문을 여닫는 사람 등등.)
+
+# 웹페이지를 다루기 때문에 실제로 해보는 것이 중요. 웹이 변하면 결과값이 변할 수 있음.
+# html이 중요~
+# extention의 open in browser 실행
