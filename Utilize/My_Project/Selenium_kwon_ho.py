@@ -5,7 +5,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-
+import time
+# import pyautogui
 urls = ["10.1016/j.physletb.2020.135710",
 "10.1016/j.physletb.2020.135609",
 "10.1016/j.physletb.2020.135502",
@@ -13,7 +14,7 @@ urls = ["10.1016/j.physletb.2020.135710",
 "10.1016/j.physletb.2020.135578",
 "10.1016/j.physletb.2020.135345",
 "10.1016/j.physletb.2020.135203",
-"10.1016/j.physletb.2020.135448",
+"10.1016/j.physletb.2020.135448"# ,
 "10.1016/j.physletb.2020.135409",
 "10.1016/j.physletb.2020.135263",
 "10.1016/j.physletb.2020.135285",
@@ -61,7 +62,8 @@ urls = ["10.1016/j.physletb.2020.135710",
 "10.1103/PhysRevC.101.064906",
 "10.1103/PhysRevLett.124.041803",
 "10.1140/epjc/s10052-019-7541-6",
-"10.1103/PhysRevD.100.112003"]
+"10.1103/PhysRevD.100.112003"
+]
 
 
 usableurls = []
@@ -87,42 +89,67 @@ options.add_argument("window-size=1920x1080")
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36")
 browser = webdriver.Chrome(options=options)
 browser.maximize_window()
-url = "https://www.whatismybrowser.com/detect/what-is-my-user-agent"
-browser.get(url)
+
 for url in urls:
     usableurl = "https://doi.org/"+url
-    res = requests.get(usableurl)
-    res.raise_for_status()
-    print("REQ", usableurl,"complete")
-    # usableurls.append(usableurl)
-    soup = BeautifulSoup(res.text, 'lxml')
+    
+    
+    # print("Browser get : ", usableurl," -->>  Complete")
+
 
 
 
     if PLBcheck.search(usableurl):
-        PLB.append(usableurl)
-        date = soup.find_all("div", attrs={"id":"publication"})
-        print(date)
+        browser.get(usableurl)
+        
+        elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='pdfLink']/span/span[1]")))
+        time.sleep(1)
+        informa = browser.find_element_by_xpath("//*[@id='publication']/div[2]/div").text
+        browser.find_element_by_xpath("//*[@id='pdfLink']/span/span[1]").click()
+
+        elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='popover-content-download-pdf-popover']/div/div/a[1]/span")))
+        browser.find_element_by_xpath("//*[@id='popover-content-download-pdf-popover']/div/div/a[1]/span").click()
+        # sonpage = browser.find_element_by_xpath("//*[@id='toolbar']/div[2]/div[1]/span[3]").text
+        # browser.switch_to_window(browser.window_handles[1])
+        # print("done")
+        pyautogui.hotkey('ctrl', 'w')
+        informa = list(informa.split(", "))
+        volume = informa[0]
+        date = informa[1]
+        motherpage = informa[2]
+        
+        print(volume, date, motherpage)
+        
+        # browser.find_element_by_id("publication")
+        # date = soup.find_all("div", attrs={"id":"publication"})
 
 
 
     elif JHEPcheck.search(usableurl):
-        JHEP.append(usableurl)
+        browser.get(usableurl)
+        elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='pdfLink']/span/span[1]")))
+
 
     elif PRCcheck.search(usableurl):
-        PRC.append(usableurl)        
+        browser.get(usableurl)
+        elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='pdfLink']/span/span[1]")))
 
     elif PRDcheck.search(usableurl):
-        PRD.append(usableurl)
+        browser.get(usableurl)
+        elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='pdfLink']/span/span[1]")))
 
     elif PRLcheck.search(usableurl):
-        PRL.append(usableurl)
+        browser.get(usableurl)
+        elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='pdfLink']/span/span[1]")))
 
     elif EPJCcheck.search(usableurl):
-        EPJC.append(usableurl)
+        browser.get(usableurl)
+        elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='pdfLink']/span/span[1]")))
 
     else:
-        IOP.append(usableurl)
+        # IOP
+        browser.get(usableurl)
+        elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='pdfLink']/span/span[1]")))
 # print("--------------------------")
 # print(str(PLB))
 # print("--------------------------")

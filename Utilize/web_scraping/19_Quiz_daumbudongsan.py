@@ -17,8 +17,8 @@ for index, row in enumerate(data_rows):
 
     print(" ========== 매물 {}========== ".format(index+1))
     print("거래 : ", trade_type)
-    print("면적 : ", area)
-    print("가격 : ", price)
+    print("면적 : ", area, "(공급/전용)")
+    print("가격 : ", price, "(만원)") 
     print("동 : ", dong)
     print("층 : ", floor)
     print(" =========================== ")
