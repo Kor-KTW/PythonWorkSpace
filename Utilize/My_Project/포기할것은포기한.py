@@ -1,5 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
+
 import re
 from selenium import webdriver 
 from selenium.webdriver.common.by import By
@@ -13,7 +12,7 @@ urls = ["10.1016/j.physletb.2020.135710",
 "10.1016/j.physletb.2020.135578",
 "10.1016/j.physletb.2020.135345",
 "10.1016/j.physletb.2020.135203",
-"10.1016/j.physletb.2020.135448"# ,
+"10.1016/j.physletb.2020.135448",
 "10.1016/j.physletb.2020.135409",
 "10.1016/j.physletb.2020.135263",
 "10.1016/j.physletb.2020.135285",
@@ -68,21 +67,21 @@ urls = ["10.1016/j.physletb.2020.135710",
 usableurls = []
 
 PLBcheck = re.compile("physletb")
-
+#저널명 확인 위함.
 options = webdriver.ChromeOptions()
-options.headless = True
+options.headless = False
 #background job 할 때 넣는 기능
 options.add_argument("window-size=1920x1080")
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36")
 #user-agent option을 통해 해당 사이트에 코드로 접속하는것이 아닌, 사람이 접속하는 것으로 느끼게 함.
 browser = webdriver.Chrome(options=options)
 browser.maximize_window()
-
+f = open("PLB", "w", encoding="utf8")
 for url in urls:
     usableurl = "https://doi.org/"+url
     
     
-    print("Browser get : ", usableurl," -->>  Complete")
+    
 
 
 
@@ -92,12 +91,15 @@ for url in urls:
         
         elem = WebDriverWait(browser, 100).until(ec.presence_of_element_located((By.XPATH,"//*[@id='pdfLink']/span/span[1]")))
         #내가 원하는 자료가 나타날때까지 최대 100초간 대기.
+        informa = browser.find_element_by_xpath("//*[@id='publication']/div[2]/div").text
+        #xpath로 타겟잡고 텍스트로 출력
         informa = list(informa.split(", "))
         volume = informa[0]
         date = informa[1]
         motherpage = informa[2]
-        
+        f.write(f"{volume}  {date}  {motherpage}")
         print(volume, date, motherpage)
-
+        print("Browser get : ", usableurl," -->>  Complete")
+    
     else:
         pass
