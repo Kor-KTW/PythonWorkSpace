@@ -70,10 +70,10 @@ PLBcheck = re.compile("physletb")
 #저널명 확인 위함.
 options = webdriver.ChromeOptions()
 options.headless = False
-#background job 할 때 넣는 기능
+#background job 할 때 넣는 기능 -> True로 설정하면 백그라운드에서 작업가능. 다만, CORS 정책때문에 블락 당했다고하지만 데이터는 다 가져옴. 
 options.add_argument("window-size=1920x1080")
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36")
-#user-agent option을 통해 해당 사이트에 코드로 접속하는것이 아닌, 사람이 접속하는 것으로 느끼게 함.
+#user-agent option을 통해 해당 사이트에 코드로 접속하는것이 아닌, 사람이 접속하는 것으로 느끼게 함. https://www.whatismybrowser.com/detect/what-is-my-user-agent 여기 들어가서 주소부분 복사 붙여넣기하면됨.
 browser = webdriver.Chrome(options=options)
 browser.maximize_window()
 f = open("PLB", "w", encoding="utf8")
@@ -97,7 +97,7 @@ for url in urls:
         volume = informa[0]
         date = informa[1]
         motherpage = informa[2]
-        f.write(f"{volume}  {date}  {motherpage}")
+        f.write(f"{volume}  {date}  {motherpage}\n")
         print(volume, date, motherpage)
         print("Browser get : ", usableurl," -->>  Complete")
     

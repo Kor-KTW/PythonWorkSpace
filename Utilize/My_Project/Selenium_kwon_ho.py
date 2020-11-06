@@ -86,7 +86,7 @@ EPJCcheck = re.compile("epjc")
 options = webdriver.ChromeOptions()
 options.headless = False
 options.add_argument("window-size=1920x1080")
-options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36")
+options.add_argument("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36")
 browser = webdriver.Chrome(options=options)
 browser.maximize_window()
 
@@ -112,7 +112,6 @@ for url in urls:
         # sonpage = browser.find_element_by_xpath("//*[@id='toolbar']/div[2]/div[1]/span[3]").text
         # browser.switch_to_window(browser.window_handles[1])
         # print("done")
-        pyautogui.hotkey('ctrl', 'w')
         informa = list(informa.split(", "))
         volume = informa[0]
         date = informa[1]
